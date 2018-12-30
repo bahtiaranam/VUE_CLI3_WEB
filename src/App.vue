@@ -1,28 +1,58 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <div id="app">
+      <v-navigation-drawer v-model="sideNav" absolute temporary>
+        <v-list>
+          <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link">
+            <v-list-tile-action>
+              <v-icon left>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>{{ item.title  }}</v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-toolbar flat color="#19b5fe">
+      <v-toolbar-side-icon id="tb" dark
+        @click.native.stop="sideNav = !sideNav" 
+          class="hidden-sm-and-up"></v-toolbar-side-icon>
+          <router-link to="/home" tag="span" style="cursor:pointer">
+            <img width="120px" v-for="img in images" v-bind:src="img"/>
+          </router-link>
+      <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-xs-only" slider-color="white">
+          <v-btn flat dark v-for="item in menuItems" :key="item.title" router :to="item.link">  
+            <v-icon left dark>{{ item.icon }}</v-icon>
+            {{  item.title }}
+          </v-btn>
+        </v-toolbar-items>
+          <v-btn href="/login" label outline color="white">Login</v-btn>
+    </v-toolbar>
+      <router-view></router-view>
+    </div>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+    data() {
+      return {
+        sideNav: false,
+        menuItems:[
+          { icon: 'place', title:  'Lowongan Kerja', link: '/loker'},
+          { icon: 'school', title:  'Pelatihan', link: '/pelatihan'},
+          { icon: 'person', title:  'Pengguna', link: '/pengguna'},
+        ],
+        images:[
+          'http://sekampus.id/wp-content/uploads/2018/11/logo-putih.png'
+          ],
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css">
+  #app{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
 </style>

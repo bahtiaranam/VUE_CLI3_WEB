@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://flaviocopes.com/vue-router/ -->
+<html prefix="og: http://ogp.me/ns#" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Vue Router Tutorial</title>
+<meta name="description" content="Discover one of the essential pieces of a Vue application: the router">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="robots" content="index,follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="The Vue Router">
+<meta property="og:description" content="Discover one of the essential pieces of a Vue application: the router">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://flaviocopes.com/vue-router/">
+<meta property="og:image" content="https://flaviocopes.com/vue-router/banner.jpg">
+<meta name="twitter:image" content="https://flaviocopes.com/vue-router/banner.jpg">
+<meta name="twitter:creator" content="@flaviocopes">
+<meta name="twitter:site" content="@flaviocopes">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/x-icon" href="https://flaviocopes.com/assets/favicon.ico">
+<link rel="shortcut icon" type="img/ico" href="https://flaviocopes.com/assets/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="flaviocopes.com" href="https://flaviocopes.com/index.xml">
+
+<link href="./Vue Router Tutorial_files/css" rel="stylesheet">
+
+<style>
+code,kbd,pre,samp{font-family:'Inconsolata', monospace}button,hr,input{overflow:visible}img,legend{max-width:100%}audio,canvas,progress,video{display:inline-block}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{padding:0;box-sizing:border-box}ol,pre,ul{margin:0 0 20px}.hljs,pre{overflow-x:auto}.hljs,article,aside,blockquote p,details,figcaption,figure,footer,header,img,main,menu,nav,section{display:block}#wrapper:after,.blog-description:after,.clearfix:after,.post-date:after{content:""}.container,.post-stub,sub,sup{position:relative}.book-ad-container img,.book-landing-with-cover img{box-shadow:5px 5px 8px grey}html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}h1{margin:.67em 0}h1,h2,h3,h4,h5,h6{margin-bottom:20px}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0}sub{bottom:-.25em}sup{top:-.5em}audio:not([controls]){display:none;height:0}img{border-style:none;margin:40px 0;width:auto}.container,table{width:100%}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:'Inconsolata', monospace;font-size:100%;line-height:1.15;margin:0}.footer,.site-header,textarea{overflow:auto}button,select{text-transform:none}.page-title,.post-header,.post-stub-tag,.post-stub-title,.post-title,.site-header,.site-title,h1,h2,h3,h4,h5,h6{text-transform:uppercase}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;white-space:normal}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}ol,p,ul{line-height:1.2em}summary{display:list-item}[hidden],template{display:none}.hljs{padding:.5em;color:#333;-webkit-text-size-adjust:none}pre,table td{padding:10px}.diff .hljs-header,.hljs-comment{color:#998;font-style:italic}.css .rule .hljs-keyword,.hljs-keyword,.hljs-request,.hljs-status,.hljs-subst,.hljs-winutils,.nginx .hljs-title{color:#333;font-weight:700}.hljs-hexcolor,.hljs-number,.ruby .hljs-constant{color:teal}.hljs-doctag,.hljs-string,.hljs-tag .hljs-value,.tex .hljs-formula{color:#d14}.hljs-id,.hljs-title,.scss .hljs-preprocessor{color:#900;font-weight:700}.hljs-list .hljs-keyword,.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type,.tex .hljs-command,.vhdl .hljs-literal{color:#458;font-weight:700}.django .hljs-tag .hljs-keyword,.hljs-rule .hljs-property,.hljs-tag,.hljs-tag .hljs-title{color:navy;font-weight:400}.hljs-attribute,.hljs-name,.hljs-variable,.lisp .hljs-body{color:teal}.hljs-regexp{color:#009926}.clojure .hljs-keyword,.hljs-prompt,.hljs-symbol,.lisp .hljs-keyword,.ruby .hljs-symbol .hljs-string,.scheme .hljs-keyword,.tex .hljs-special{color:#f03838}.hljs-built_in{color:#0086b3}.hljs-cdata,.hljs-doctype,.hljs-pi,.hljs-pragma,.hljs-preprocessor,.hljs-shebang{color:#999;font-weight:700}h2,h3{padding-top:40px;font-weight:900}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.diff .hljs-change{background:#0086b3}.hljs-chunk{color:#aaa}a,a code{color:#00a0fc}body,html{height:100%}body{margin:0;background:#fefefe;color:#424242;font-family: 'Inconsolata', monospace;
+font-size:20px}h1{font-size:35px;}h2{font-size:28px}h3{font-size:26px}h4{font-size:24px;margin-bottom:18px}h5{font-size:16px;margin-bottom:15px}h6{font-size:14px;margin-bottom:12px}p{margin:0 0 30px}a{text-decoration:none}ol ol,ol ul,ul ol,ul ul{margin:10px 10px 12px 20px}ol li,ul li{margin:0 0 2px}ol li:last-of-type,ul li:last-of-type{margin-bottom:0}blockquote{border-left:1px dotted #00a0fc;margin:40px 0;padding:5px 30px}blockquote p{color:#aeadad;font-style:italic;margin:0;width:100%}pre{background:#f1f0ea;border:1px solid #dddbcc;border-radius:3px;font-size:16px;margin-bottom:30px!important}pre code{padding:0}code{padding:2px 4px;font-size:100%;color:#444;background-color:#f1f0ea;border-radius:4px}hr{border:none;border-bottom:1px solid #333;margin:45px 0}.fluid-width-video-wrapper,table{margin-bottom:40px}table tbody>tr:nth-child(odd)>td,table tbody>tr:nth-child(odd)>th{background-color:#f7f7f3}table th{padding:0 10px 10px;text-align:left}.error,.post-header,.site-header{text-align:center}table tr{border-bottom:1px dotted #aeadad}::selection{background:#fff5b8;color:#000;display:block}::-moz-selection{background:#fff5b8;color:#000;display:block}.hidden{text-indent:-9999px;visibility:hidden;display:none}.clearfix:after{display:table;clear:both}.container{margin:0 auto;max-width:889px}#wrapper{height:auto;min-height:100%;margin-bottom:-265px}#wrapper:after{display:block;height:265px}.button{background:#303030;border:none;border-radius:3px;color:#fefefe;font-size:14px;font-weight:700;padding:10px 12px}.button-square,.button:hover{background:#00a0fc}.button-square{color:#fff;float:left;font-size:17px;margin:0 0 0 10px;padding:3px 8px 4px}.button-square:hover{background:#303030}.comments{margin-top:10px}.site-header{padding:40px 0 0}.site-title-wrapper{display:table;margin:0 auto}.site-title{float:left;font-size:14px;font-weight:600;margin:0}.site-title a{float:left;background:#00a0fc;color:#fefefe;padding:5px 10px 6px}.site-title a:hover{background:#303030}.site-logo{display:block}.site-logo img{margin:0}.site-nav{list-style:none;margin:28px 0 10px;padding:0}.site-nav-item{display:inline-block;font-size:14px;font-weight:700;margin:0 10px}.site-nav-item a:hover{color:#424242}#latest-post{display:none}.post-container{margin:0 40px}.post-header{border-bottom:1px solid #333;margin:0 0 50px;padding:0 0 0}.page-title,.post-title{font-size:55px;font-weight:900;margin:15px 0;text-align:left;}.page-title{margin:15px 40px}.blog-description,.post-date{color:#aeadad;font-size:14px;font-weight:600;line-height:1;margin:25px 0 0;text-align:left}.center,.footer-copyright,.share,.share a{text-align:center}.blog-description a,.post-date a{color:#aeadad}.blog-description a:hover,.post-date a:hover{color:#00a0fc}.blog-description:after,.post-date:after{display:block;margin:40px auto 0;width:100px}.post-content a{border-bottom:1px dotted #00a0fc;padding:0 0 2px}.post-content:last-child{margin-bottom:0}.post-content .footnote{border-spacing:0;margin-bottom:0}.post-content .footnote .label+td{width:100%}.post-content .gist tr{border-bottom:0}.post-content img{width:auto;margin:0 auto;max-width:100%}.post-tags,.share{color:#aeadad;font-size:14px}.post-tags span,.share span{font-weight:600}.post-tags{float:left;margin:3px 0 0}.post-tags a:hover{color:#303030}.share{margin:0 auto}.share a{background:#00a0fc;color:#fff;display:inline-block;font-size:30px;margin-left:5px;padding:5px 0 4px;width:50px}.share a:hover{background:#303030}.post-navigation{display:table;margin:70px auto 100px}.newer-posts,.older-posts{float:left;background:#00a0fc;color:#fefefe;font-size:14px;font-weight:600;margin:0 5px;padding:5px 10px 6px;text-transform:uppercase}.newer-posts:hover,.older-posts:hover{background:#303030}.page-number{display:none}.post-list{list-style:none;padding:0;width:100%}.post-stub{border-bottom:1px dotted #303030;margin:0;display:block;padding:20px 12px}.post-stub a{color:#424242}.post-stub:hover{background:#fcf5f5;color:#00a0fc}.post-stub:hover .post-stub-tag{background:#00a0fc}.post-stub-tag{background:#303030;border-radius:3px;color:#fff;float:right;font-size:10px;margin:7px 0 0;padding:0 5px}.post-stub-title{font-size:21px;display:inline-block;margin:0;font-weight:900}.post-stub-description{display:inline-block;margin:0;text-transform:none}.post-stub-date{text-align: right;font-family:'Inconsolata', monospace;display:inline-block;font-size:18px;padding-top: 8px;}.next-posts-link a,.previous-posts-link a{display:block;padding:8px 11px}.footer{background:#303030;color:#d3d3d3;height:265px;margin-top:0}.footer .site-title-wrapper{margin:80px auto 35px}.footer .button-square:hover,.footer .site-title a:hover{background:#121212}.footer-copyright{color:#656565;font-size:14px;margin:0;text-transform:uppercase}.footer-copyright a{color:#656565;font-weight:700}.footer-copyright a:hover{color:#fefefe}@media only screen and (max-width:800px){.post-stub-tag{display:none}}@media only screen and (max-width:600px){.page-title,.post-header p,.post-title{word-wrap:break-word;overflow-wrap:break-word}h1,h2,ol,p,ul{margin-bottom:20px;word-break: break-word;}blockquote,img{margin:30px 0}pre{margin:20px 0}hr{margin:35px 0}.site-header{padding-top:40px}.site-title{float:none;margin-bottom:15px}.site-title a{float:none}.site-title+.button-square{margin-left:0}.site-nav-item{display:block;margin:15px 0}.post-header{padding-bottom:20px}.page-title,.post-title{font-size:42px;margin-top:5px}.blog-description,.post-date{margin-top:20px}.blog-description:after,.blog-description:before,.post-date:after,.post-date:before{margin-top:30px}.post-list,.share{margin-top:20px}.post-stub-title{display:block}.post-stub-date:before{content:"";display:block}.post-container,.post-list{margin-right:10px;margin-left:10px}.post-tags{width:100%}.post-stub a,.post-stub a:hover{padding-top:12px;padding-bottom:12px}.share{float:left}.share a{margin:0 5px 0 0}.footer{margin-top:0}.footer .site-title-wrapper{text-align:center}.footer .button-jump-top{clear:both;display:inline-block;float:none}}@media only screen and (max-width:400px){.site-header{padding-top:40px}.page-title,.post-title{font-size:48px;line-height:1.2;word-wrap:break-word;overflow-wrap:break-word}.blog-description,.post-date{line-height:1.6;margin-top:10px}.blog-description:after,.blog-description:before,.post-date:after,.post-date:before{margin-top:20px}.post-container,aside,.post-list{margin-right:4px;margin-left:4px}.footer-copyright{padding:0 10px}}.center{margin:0 auto}.book-container-bottom{padding-top:40px;text-align:center;margin:0 auto;max-width:600px;padding-bottom:80px}@media only screen and (max-width:782px){#container{padding-top:0}}.gumroad-button img{width:250px;margin:0 auto}h2.post-description{padding-top:30px;font-size:23px;font-weight:300;text-align:left;line-height:2.5rem;padding-bottom:30px;letter-spacing:.5px;text-transform:none}code[class*=language-],pre[class*=language-]{white-space:pre-wrap!important}#cookie-bar{border-top:none!important}.book-ad-container{display:flex;flex-direction:row;justify-content:space-around}.book-ad-container .description{text-align:left}.book-ad-container img{margin:-15px 0 0}.ck_form.ck_naked .ck_subscribe_button{background:#00a0fc!important}.book-wrapper{display:grid;grid-template-columns:70% 30%}.book-wrapper .book-wrapper-text{margin-top:70px;text-align:left}.home-section-col,.post-header.homepage .post-title{text-align:center}.book-wrapper img{width:200px;box-shadow:2px 2px 2px 2px #ccc}@media only screen and (max-width:750px){.post-title{font-size:65px}}@media only screen and (max-width:590px){.post-title,h2{font-size:45px}}@media only screen and (max-width:400px){.book-wrapper{display:block}.book-wrapper img{display:none}h2{font-size:25px}.homepage .post-title{font-size:50px}}.post-list > a:visited{color:gray}.book-banner-fixed{position:absolute;width:100%;text-align:center;background-color:#00a0fc;font-weight:500;padding-bottom:20px;padding-top:20px;top:0;z-index:10}@media only screen and (max-width:590px){.book-banner-fixed{display:none}}.home-section-col,aside{display:block; padding-top:30px}.home-section-col ul,aside ul{list-style-type:none;padding-left:0}.home-section-col ul li,aside ul li{font-size:1.2rem}.home-section-col ul li:nth-child(even),.home-section-col ul li a,aside ul li a{color:#424240;text-decoration:underline;}.home-section-col ul li a.active,aside ul li a.active{background-color:rgba(255,255,0,.27)}.home-section-col{width:48.2%}@media only screen and (max-width:400px){.home-section-col{display:block;width:100%}.formkit-header{font-size:25px!important}}.sections-wrapper{width:100%;display:flex;flex-flow:row wrap;justify-content:space-between}.single-post-container.has-sidebar{display:grid;grid-template-columns:220px auto;grid-column-gap:45px;grid-template-areas:"sidebar main";max-width:1200px}.single-post-container.has-sidebar article{grid-area:main}.single-post-container.has-sidebar aside{grid-area:sidebar;padding-left:10px}@media only screen and (max-width:950px){.single-post-container.has-sidebar{grid-column-gap:25px;grid-template-columns:220px auto}}@media only screen and (max-width:900px){aside{margin: 0 40px}.single-post-container.has-sidebar{grid-template-columns:auto;grid-template-areas:"main" "sidebar"}.single-post-container.has-sidebar aside{padding-right:5px}}.single-post-container{margin-top:50px;padding-left:15px;padding-right:15px;box-sizing:border-box}.ais-hits--item{padding:10px}.ais-hits--item:nth-child(even){background:rgba(0,160,252,.1)}.ais-hits--item em{font-weight:700}.home-section-col a,.home-section-col a:visited{color:#424242}.home-section-col section{border:1px solid #ccc;padding:30px;height:150px;margin-bottom:50px}.home-section-col h2{padding-top:0}.tags{float:left;padding-top:10px}.tags .button{display:block;padding:8px;background-color:#7fffd4;margin-left:0px;float:right}.tags .node{background-color:#5b5ea6; color: #fff!important}.tags .express{background-color:#b565a7}.tags .git{background-color:#dd4132}.tags .network{background-color:#6b5b95; color: #fff!important}.tags .browser{background-color:#5b5ea6;color: #fff!important}.tags .pwa{background-color:#6f9fd8}.tags .react{background-color:#282c34; color: #61dafb!important}.tags .vue{background-color:#00a591}.tags .js{background-color:#ecdb54; color: #000!important}.tags .cookbook{background-color:#eadedb;color:#333!important}.tags .css{background-color:#bc70a4}.tags .devtools{background-color:#ce3175}.tags .lab{background-color:#95dee3; color:#000!important}.tags .services{background-color:#f7786b}.tags .libraries{background-color:#dd4132}.tags .go{background-color:#bfd641; color:#000!important}.tags .html,.tags .softskills{background-color:#f2552c}.post-list h4{font-size:30px;padding-top:10px;padding-bottom:10px}.footer-tags{margin-bottom:50px;float:none; padding-left:0}.footer-tags .button{float:none;display:inline-block;margin-top:18px}.tags-list h1{padding-left:12px;font-size:38px}
+aside input {padding: 5px}
+body.dark aside input {border: 1px solid #333}
+body.dark, body.dark input{background-color: rgb(30,34,39); color:#fff}
+body.dark .post-stub a, body.dark .home-section-col ul li:nth-child(even), body.dark .home-section-col ul li a, body.dark aside ul li a {color:#fff}
+body.dark .post-stub:hover, body.dark :not(pre)>code[class*=language-], body.dark pre[class*=language-], body.dark pre { background: #282c34;}
+body.dark code[class*=language-], body.dark pre[class*=language-] {text-shadow:none;color:#fff}
+body.dark .language-css .token.string, body.dark .style .token.string, body.dark .token.entity, body.dark .token.operator, body.dark .token.url {background: none}
+body.dark table tbody>tr:nth-child(odd)>td, body.dark table tbody>tr:nth-child(odd)>th {background: #282c34}
+body.dark .token.attr-name, body.dark .token.builtin, body.dark .token.char, body.dark .token.inserted, body.dark .token.selector, body.dark .token.string { color:#ecdb54}
+@media only screen and (max-width: 400px)
+.post-list {
+  margin-right: 0;
+  margin-left: 0;
+}
+</style>
+<style>
+code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:'Inconsolata', monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:break-word;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#a67f59;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.function{color:#DD4A68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+</style>
+
+<script async="" src="./Vue Router Tutorial_files/analytics.js.download"></script><script defer="" type="text/javascript">
+
+
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={manual:_self.Prism&&_self.Prism.manual,disableWorkerMessageHandler:_self.Prism&&_self.Prism.disableWorkerMessageHandler,util:{encode:function(e){return e instanceof r?new r(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=n.util.clone(e[a]));return r;case"Array":return e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var r=n.util.clone(n.languages[e]);for(var a in t)r[a]=t[a];return r},insertBefore:function(e,t,r,a){a=a||n.languages;var l=a[e];if(2==arguments.length){r=arguments[1];for(var i in r)r.hasOwnProperty(i)&&(l[i]=r[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in r)r.hasOwnProperty(i)&&(o[i]=r[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===a[e]&&t!=e&&(this[t]=o)}),a[e]=o},DFS:function(e,t,r,a){a=a||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],r||l),"Object"!==n.util.type(e[l])||a[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||a[n.util.objId(e[l])]||(a[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,a)):(a[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,a)))}},plugins:{},highlightAll:function(e,t){n.highlightAllUnder(document,e,t)},highlightAllUnder:function(e,t,r){var a={callback:r,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var l,i=a.elements||e.querySelectorAll(a.selector),o=0;l=i[o++];)n.highlightElement(l,t===!0,a.callback)},highlightElement:function(t,r,a){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1].toLowerCase(),i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,t.parentNode&&(o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l));var s=t.textContent,g={element:t,language:l,grammar:i,code:s};if(n.hooks.run("before-sanity-check",g),!g.code||!g.grammar)return g.code&&(n.hooks.run("before-highlight",g),g.element.textContent=g.code,n.hooks.run("after-highlight",g)),n.hooks.run("complete",g),void 0;if(n.hooks.run("before-highlight",g),r&&_self.Worker){var u=new Worker(n.filename);u.onmessage=function(e){g.highlightedCode=e.data,n.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,a&&a.call(g.element),n.hooks.run("after-highlight",g),n.hooks.run("complete",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code,immediateClose:!0}))}else g.highlightedCode=n.highlight(g.code,g.grammar,g.language),n.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,a&&a.call(t),n.hooks.run("after-highlight",g),n.hooks.run("complete",g)},highlight:function(e,t,a){var l=n.tokenize(e,t);return r.stringify(n.util.encode(l),a)},matchGrammar:function(e,t,r,a,l,i,o){var s=n.Token;for(var g in r)if(r.hasOwnProperty(g)&&r[g]){if(g==o)return;var u=r[g];u="Array"===n.util.type(u)?u:[u];for(var c=0;c<u.length;++c){var h=u[c],f=h.inside,d=!!h.lookbehind,m=!!h.greedy,p=0,y=h.alias;if(m&&!h.pattern.global){var v=h.pattern.toString().match(/[imuy]*$/)[0];h.pattern=RegExp(h.pattern.source,v+"g")}h=h.pattern||h;for(var b=a,k=l;b<t.length;k+=t[b].length,++b){var w=t[b];if(t.length>e.length)return;if(!(w instanceof s)){h.lastIndex=0;var _=h.exec(w),P=1;if(!_&&m&&b!=t.length-1){if(h.lastIndex=k,_=h.exec(e),!_)break;for(var A=_.index+(d?_[1].length:0),j=_.index+_[0].length,x=b,O=k,N=t.length;N>x&&(j>O||!t[x].type&&!t[x-1].greedy);++x)O+=t[x].length,A>=O&&(++b,k=O);if(t[b]instanceof s||t[x-1].greedy)continue;P=x-b,w=e.slice(k,O),_.index-=k}if(_){d&&(p=_[1]?_[1].length:0);var A=_.index+p,_=_[0].slice(p),j=A+_.length,S=w.slice(0,A),C=w.slice(j),M=[b,P];S&&(++b,k+=S.length,M.push(S));var E=new s(g,f?n.tokenize(_,f):_,y,_,m);if(M.push(E),C&&M.push(C),Array.prototype.splice.apply(t,M),1!=P&&n.matchGrammar(e,t,r,b,k,!0,g),i)break}else if(i)break}}}}},tokenize:function(e,t){var r=[e],a=t.rest;if(a){for(var l in a)t[l]=a[l];delete t.rest}return n.matchGrammar(e,r,t,0,0,!1),r},hooks:{all:{},add:function(e,t){var r=n.hooks.all;r[e]=r[e]||[],r[e].push(t)},run:function(e,t){var r=n.hooks.all[e];if(r&&r.length)for(var a,l=0;a=r[l++];)a(t)}}},r=n.Token=function(e,t,n,r,a){this.type=e,this.content=t,this.alias=n,this.length=0|(r||"").length,this.greedy=!!a};if(r.stringify=function(e,t,a){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return r.stringify(n,t,e)}).join("");var l={type:e.type,content:r.stringify(e.content,t,a),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:a};if(e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o=Object.keys(l.attributes).map(function(e){return e+'="'+(l.attributes[e]||"").replace(/"/g,"&quot;")+'"'}).join(" ");return"<"+l.tag+' class="'+l.classes.join(" ")+'"'+(o?" "+o:"")+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(n.disableWorkerMessageHandler||_self.addEventListener("message",function(e){var t=JSON.parse(e.data),r=t.language,a=t.code,l=t.immediateClose;_self.postMessage(n.highlight(a,n.languages[r],r)),l&&_self.close()},!1),_self.Prism):_self.Prism;var a=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return a&&(n.filename=a.src,n.manual||a.hasAttribute("data-manual")||("loading"!==document.readyState?window.requestAnimationFrame?window.requestAnimationFrame(n.highlightAll):window.setTimeout(n.highlightAll,16):document.addEventListener("DOMContentLoaded",n.highlightAll))),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+Prism.languages.markup={comment:/<!--[\s\S]*?-->/,prolog:/<\?[\s\S]+?\?>/,doctype:/<!DOCTYPE[\s\S]+?>/i,cdata:/<!\[CDATA\[[\s\S]*?]]>/i,tag:{pattern:/<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i,inside:{tag:{pattern:/^<\/?[^\s>\/]+/i,inside:{punctuation:/^<\/?/,namespace:/^[^\s>\/:]+:/}},"attr-value":{pattern:/=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+)/i,inside:{punctuation:[/^=/,{pattern:/(^|[^\\])["']/,lookbehind:!0}]}},punctuation:/\/?>/,"attr-name":{pattern:/[^\s>\/]+/,inside:{namespace:/^[^\s>\/:]+:/}}}},entity:/&#?[\da-z]{1,8};/i},Prism.languages.markup.tag.inside["attr-value"].inside.entity=Prism.languages.markup.entity,Prism.hooks.add("wrap",function(a){"entity"===a.type&&(a.attributes.title=a.content.replace(/&amp;/,"&"))}),Prism.languages.xml=Prism.languages.markup,Prism.languages.html=Prism.languages.markup,Prism.languages.mathml=Prism.languages.markup,Prism.languages.svg=Prism.languages.markup;
+Prism.languages.css={comment:/\/\*[\s\S]*?\*\//,atrule:{pattern:/@[\w-]+?.*?(?:;|(?=\s*\{))/i,inside:{rule:/@[\w-]+/}},url:/url\((?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,selector:/[^{}\s][^{};]*?(?=\s*\{)/,string:{pattern:/("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},property:/[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,important:/\B!important\b/i,"function":/[-a-z0-9]+(?=\()/i,punctuation:/[(){};:]/},Prism.languages.css.atrule.inside.rest=Prism.util.clone(Prism.languages.css),Prism.languages.markup&&(Prism.languages.insertBefore("markup","tag",{style:{pattern:/(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i,lookbehind:!0,inside:Prism.languages.css,alias:"language-css",greedy:!0}}),Prism.languages.insertBefore("inside","attr-value",{"style-attr":{pattern:/\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,inside:{"attr-name":{pattern:/^\s*style/i,inside:Prism.languages.markup.tag.inside},punctuation:/^\s*=\s*['"]|['"]\s*$/,"attr-value":{pattern:/.+/i,inside:Prism.languages.css}},alias:"language-css"}},Prism.languages.markup.tag));
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[\w.\\]+/i,lookbehind:!0,inside:{punctuation:/[.\\]/}},keyword:/\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(?:true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,number:/\b(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|NaN|Infinity)\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/,"function":/[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/i,operator:/-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/}),Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^\/])\/(?!\/)(\[[^\]\r\n]+]|\\.|[^\/\\\[\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,lookbehind:!0,greedy:!0},"function-variable":{pattern:/[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*=\s*(?:function\b|(?:\([^()]*\)|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i,alias:"function"}}),Prism.languages.insertBefore("javascript","string",{"template-string":{pattern:/`(?:\\[\s\S]|[^\\`])*`/,greedy:!0,inside:{interpolation:{pattern:/\$\{[^}]+\}/,inside:{"interpolation-punctuation":{pattern:/^\$\{|\}$/,alias:"punctuation"},rest:Prism.languages.javascript}},string:/[\s\S]+/}}}),Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,lookbehind:!0,inside:Prism.languages.javascript,alias:"language-javascript",greedy:!0}}),Prism.languages.js=Prism.languages.javascript;
+!function(e){var t={variable:[{pattern:/\$?\(\([\s\S]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\s\S]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b0x[\dA-Fa-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee]-?\d+)?/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,greedy:!0,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[\w#?*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)["']?(\w+?)["']?\s*\r?\n(?:[\s\S])*?\r?\n\2/,lookbehind:!0,greedy:!0,inside:t},{pattern:/(["'])(?:\\[\s\S]|\$\([^)]+\)|`[^`]+`|(?!\1)[^\\])*\1/,greedy:!0,inside:t}],variable:t.variable,"function":{pattern:/(^|[\s;|&])(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|npm|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|[\s;|&])/,lookbehind:!0},keyword:{pattern:/(^|[\s;|&])(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|[\s;|&])/,lookbehind:!0},"boolean":{pattern:/(^|[\s;|&])(?:true|false)(?=$|[\s;|&])/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a.string=e.languages.bash.string,a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation,e.languages.shell=e.languages.bash}(Prism);
+Prism.languages.git={comment:/^#.*/m,deleted:/^[-â€“].*/m,inserted:/^\+.*/m,string:/("|')(?:\\.|(?!\1)[^\\\r\n])*\1/m,command:{pattern:/^.*\$ git .*$/m,inside:{parameter:/\s--?\w+/m}},coord:/^@@.*@@$/m,commit_sha1:/^commit \w{40}$/m};
+Prism.languages.go=Prism.languages.extend("clike",{keyword:/\b(?:break|case|chan|const|continue|default|defer|else|fallthrough|for|func|go(?:to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/,builtin:/\b(?:bool|byte|complex(?:64|128)|error|float(?:32|64)|rune|string|u?int(?:8|16|32|64)?|uintptr|append|cap|close|complex|copy|delete|imag|len|make|new|panic|print(?:ln)?|real|recover)\b/,"boolean":/\b(?:_|iota|nil|true|false)\b/,operator:/[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,number:/(?:\b0x[a-f\d]+|(?:\b\d+\.?\d*|\B\.\d+)(?:e[-+]?\d+)?)i?/i,string:{pattern:/(["'`])(\\[\s\S]|(?!\1)[^\\])*\1/,greedy:!0}}),delete Prism.languages.go["class-name"];
+Prism.languages.graphql={comment:/#.*/,string:{pattern:/"(?:\\.|[^\\"\r\n])*"/,greedy:!0},number:/(?:\B-|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,"boolean":/\b(?:true|false)\b/,variable:/\$[a-z_]\w*/i,directive:{pattern:/@[a-z_]\w*/i,alias:"function"},"attr-name":/[a-z_]\w*(?=\s*:)/i,keyword:[{pattern:/(fragment\s+(?!on)[a-z_]\w*\s+|\.{3}\s*)on\b/,lookbehind:!0},/\b(?:query|fragment|mutation)\b/],operator:/!|=|\.{3}/,punctuation:/[!(){}\[\]:=,]/};
+Prism.languages.json={property:/"(?:\\.|[^\\"\r\n])*"(?=\s*:)/i,string:{pattern:/"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,greedy:!0},number:/\b0x[\dA-Fa-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/,punctuation:/[{}[\]);,]/,operator:/:/g,"boolean":/\b(?:true|false)\b/i,"null":/\bnull\b/i},Prism.languages.jsonp=Prism.languages.json;
+!function(e){e.languages.php=e.languages.extend("clike",{keyword:/\b(?:and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/i,constant:/\b[A-Z0-9_]{2,}\b/,comment:{pattern:/(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,lookbehind:!0}}),e.languages.insertBefore("php","string",{"shell-comment":{pattern:/(^|[^\\])#.*/,lookbehind:!0,alias:"comment"}}),e.languages.insertBefore("php","keyword",{delimiter:{pattern:/\?>|<\?(?:php|=)?/i,alias:"important"},variable:/\$+(?:\w+\b|(?={))/i,"package":{pattern:/(\\|namespace\s+|use\s+)[\w\\]+/,lookbehind:!0,inside:{punctuation:/\\/}}}),e.languages.insertBefore("php","operator",{property:{pattern:/(->)[\w]+/,lookbehind:!0}}),e.languages.insertBefore("php","string",{"nowdoc-string":{pattern:/<<<'([^']+)'(?:\r\n?|\n)(?:.*(?:\r\n?|\n))*?\1;/,greedy:!0,alias:"string",inside:{delimiter:{pattern:/^<<<'[^']+'|[a-z_]\w*;$/i,alias:"symbol",inside:{punctuation:/^<<<'?|[';]$/}}}},"heredoc-string":{pattern:/<<<(?:"([^"]+)"(?:\r\n?|\n)(?:.*(?:\r\n?|\n))*?\1;|([a-z_]\w*)(?:\r\n?|\n)(?:.*(?:\r\n?|\n))*?\2;)/i,greedy:!0,alias:"string",inside:{delimiter:{pattern:/^<<<(?:"[^"]+"|[a-z_]\w*)|[a-z_]\w*;$/i,alias:"symbol",inside:{punctuation:/^<<<"?|[";]$/}},interpolation:null}},"single-quoted-string":{pattern:/'(?:\\[\s\S]|[^\\'])*'/,greedy:!0,alias:"string"},"double-quoted-string":{pattern:/"(?:\\[\s\S]|[^\\"])*"/,greedy:!0,alias:"string",inside:{interpolation:null}}}),delete e.languages.php.string;var n={pattern:/{\$(?:{(?:{[^{}]+}|[^{}]+)}|[^{}])+}|(^|[^\\{])\$+(?:\w+(?:\[.+?]|->\w+)*)/,lookbehind:!0,inside:{rest:e.languages.php}};e.languages.php["heredoc-string"].inside.interpolation=n,e.languages.php["double-quoted-string"].inside.interpolation=n,e.languages.markup&&(e.hooks.add("before-highlight",function(n){"php"===n.language&&/(?:<\?php|<\?)/gi.test(n.code)&&(n.tokenStack=[],n.backupCode=n.code,n.code=n.code.replace(/(?:<\?php|<\?)[\s\S]*?(?:\?>|$)/gi,function(e){for(var a=n.tokenStack.length;-1!==n.backupCode.indexOf("___PHP"+a+"___");)++a;return n.tokenStack[a]=e,"___PHP"+a+"___"}),n.grammar=e.languages.markup)}),e.hooks.add("before-insert",function(e){"php"===e.language&&e.backupCode&&(e.code=e.backupCode,delete e.backupCode)}),e.hooks.add("after-highlight",function(n){if("php"===n.language&&n.tokenStack){n.grammar=e.languages.php;for(var a=0,t=Object.keys(n.tokenStack);a<t.length;++a){var i=t[a],r=n.tokenStack[i];n.highlightedCode=n.highlightedCode.replace("___PHP"+i+"___",'<span class="token php language-php">'+e.highlight(r,n.grammar,"php").replace(/\$/g,"$$$$")+"</span>")}n.element.innerHTML=n.highlightedCode}}))}(Prism);
+!function(a){var e=a.util.clone(a.languages.javascript);a.languages.jsx=a.languages.extend("markup",e),a.languages.jsx.tag.pattern=/<\/?[\w.:-]+\s*(?:\s+(?:[\w.:-]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s{'">=]+|\{(?:\{[^}]+\}|[^{}])+\}))?|\{\.{3}[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\}))*\s*\/?>/i,a.languages.jsx.tag.inside["attr-value"].pattern=/=(?!\{)(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">]+)/i,a.languages.insertBefore("inside","attr-name",{spread:{pattern:/\{\.{3}[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\}/,inside:{punctuation:/\.{3}|[{}.]/,"attr-value":/\w+/}}},a.languages.jsx.tag);var s=a.util.clone(a.languages.jsx);delete s.punctuation,s=a.languages.insertBefore("jsx","operator",{punctuation:/=(?={)|[{}[\];(),.:]/},{jsx:s}),a.languages.insertBefore("inside","attr-value",{script:{pattern:/=(\{(?:\{[^}]*\}|[^}])+\})/i,inside:s,alias:"language-javascript"}},a.languages.jsx.tag)}(Prism);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  ((localStorage.getItem('mode') || 'dark') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
+})
+</script></head>
+<body class="dark">
+  <div id="wrapper">
+    <div id="container">
+
+
+<div class="container single-post-container has-sidebar">
+  <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+      <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">The Vue Router</h1>
+    
+        <h2 class="post-description" itemprop="description">Discover one of the essential pieces of a Vue application: the router</h2>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-06-29" itemprop="datePublished">Jun 29, 2018</time></span>
+    </p>
+</header>
+
+
+      
+      <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In a JavaScript web application, a router is the part that syncs the currently displayed view with the browser address bar content.</p>
+
+<p>In other words, it’s the part that makes the URL change when you click something in the page, and helps to show the correct view when you hit a specific URL.</p>
+
+<p>Traditionally the Web is built around URLs. When you hit a certain URL, a specific page is displayed.</p>
+
+<p>With the introduction of applications that run inside the browser and change what the user sees, many applications broke this interaction, and you had to manually update the URL with the browser’s History API.</p>
+
+<p>You need a router when you need to sync URLs to views in your app. It’s a very common need, and all the major modern frameworks now allow you to manage routing.</p>
+
+<p>The Vue Router library is the way to go for Vue.js applications. Vue does not enforce the use of this library. You can use whatever generic routing library you want, or also create your own History API integration, but the benefit of using Vue Router is that it’s <strong>official</strong>.</p>
+
+<p>This means it’s maintained by the same people who maintain Vue, so you get a more consistent integration in the framework, and the guarantee that it’s always going to be compatible in the future, no matter what.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Vue Router is available via <a href="https://flaviocopes.com/npm/">npm</a> with the package named <code>vue-router</code>.</p>
+
+<p>If you use Vue via a script tag, you can include Vue Router using</p>
+
+<pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://unpkg.com/vue-router<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+
+<blockquote>
+<p>unpkg.com is a very handy tool that makes every npm package available in the browser with a simple link</p>
+</blockquote>
+
+<p>If you use the <a href="https://flaviocopes.com/vue-cli/">Vue CLI</a>, install it using</p>
+
+<pre class=" language-bash"><code class=" language-bash"><span class="token function">npm</span> <span class="token function">install</span> vue-router
+</code></pre>
+
+<p>Once you install <code>vue-router</code> and make it available either using a script tag or via Vue CLI, you can now import it in your app.</p>
+
+<p>You import it after <code>vue</code>, and you call <code>Vue.use(VueRouter)</code> to <em>install</em> it inside the app:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> VueRouter <span class="token keyword">from</span> <span class="token string">'vue-router'</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueRouter<span class="token punctuation">)</span>
+</code></pre>
+
+<p>After you call <code>Vue.use()</code> passing the router object, in any component of the app you have access to these objects:</p>
+
+<ul>
+<li><code>this.$router</code> is the router object</li>
+<li><code>this.$route</code> is the current route object</li>
+</ul>
+
+<h2 id="the-router-object">The router object</h2>
+
+<p>The router object, accessed using <code>this.$router</code> from any component when the Vue Router is installed in the root Vue component, offers many nice features.</p>
+
+<p>We can make the app navigate to a new route using</p>
+
+<ul>
+<li><code>this.$router.push()</code></li>
+<li><code>this.$router.replace()</code></li>
+<li><code>this.$router.go()</code></li>
+</ul>
+
+<p>which resemble the <code>pushState</code>, <code>replaceState</code> and <code>go</code> methods of the History API.</p>
+
+<p><code>push()</code> is used to go to a new route, adding a new item to the browser history. <code>replace()</code> is the same, except it does not push a new state to the history.</p>
+
+<p>Usage samples:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'about'</span><span class="token punctuation">)</span> <span class="token comment">//named route, see later</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'about'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span> query<span class="token punctuation">:</span> <span class="token punctuation">{</span> post_slug<span class="token punctuation">:</span> <span class="token string">'hello-world'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">//using query parameters (post?post_slug=hello-world)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'about'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p><code>go()</code> goes back and forth, accepting a number that can be positive or negative to go back in the history:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">//go back 1 step</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">//go forward 1 step</span>
+</code></pre>
+
+<h2 id="defining-the-routes">Defining the routes</h2>
+
+<p>I’m using a <a href="https://flaviocopes.com/vue-single-file-components/">Vue Single File Component</a> in this example.</p>
+
+<p>In the template I use a <code>nav</code> tag that has 3 <code>router-link</code> components, which have a label (Home/Login/About) and a URL assigned through the <code>to</code> attribute.</p>
+
+<p>The <code>router-view</code> component is where the Vue Router will put the content that matches the current URL.</p>
+
+<pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Home<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/login<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Login<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/about<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>About<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+
+<p>A <code>router-link</code> component renders an <code>a</code> tag by default (you can change that). Every time the route changes, either by clicking a link or by changing the URL, a <code>router-link-active</code> class is added to the element that refers to the active route, allowing you to style it.</p>
+
+<p>In the JavaScript part we first include and install the router, then we define 3 <strong>route components</strong>.</p>
+
+<p>We pass them to the initialization of the <code>router</code> object, and we pass this object to the Vue root instance.</p>
+
+<p>Here’s the code:</p>
+
+<pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> VueRouter <span class="token keyword">from</span> <span class="token string">'vue-router'</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> Home  <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Home&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> Login <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Login&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> About <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;About&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Home <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/login'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Login <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/about'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> About <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  router
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+
+<p>Usually, in a Vue app you instantiate and mount the root app using:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  render<span class="token punctuation">:</span> h <span class="token operator">=&gt;</span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>When using the Vue Router, you don’t pass a <code>render</code> property but instead, you use <code>router</code>.</p>
+
+<p>The syntax used in the above example:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  router
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>is a shorthand for</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  router<span class="token punctuation">:</span> router
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>See in the example, we pass a <code>routes</code> array to the <code>VueRouter</code> constructor. Each route in this array has a <code>path</code> and <code>component</code> params.</p>
+
+<p>If you pass a <code>name</code> param too, you have a <strong>named route</strong>.</p>
+
+<h2 id="using-named-routes-to-pass-parameters-to-the-router-push-and-replace-methods">Using named routes to pass parameters to the router push and replace methods</h2>
+
+<p>Remember how we used the Router object to push a new state before?</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'about'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>With a named route we can pass parameters to the new route:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span> params<span class="token punctuation">:</span> <span class="token punctuation">{</span> post_slug<span class="token punctuation">:</span> <span class="token string">'hello-world'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>the same goes for <code>replace()</code>:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span> params<span class="token punctuation">:</span> <span class="token punctuation">{</span> post_slug<span class="token punctuation">:</span> <span class="token string">'hello-world'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<h2 id="what-happens-when-a-user-clicks-a-router-link">What happens when a user clicks a <code>router-link</code></h2>
+
+<p>The application will render the route component that matches the URL passed to the link.</p>
+
+<p>The new route component that handles the URL is instantiated and its guards called, and the old route component will be destroyed.</p>
+
+<h2 id="route-guards">Route guards</h2>
+
+<p>Since we mentioned <strong>guards</strong>, let’s introduce them.</p>
+
+<p>You can think of them of life cycle hooks or middleware, those are functions called at specific times during the execution of the application. You can jump in and alter the execution of a route, redirecting or simply canceling the request.</p>
+
+<p>You can have global guards by adding a callback to the <code>beforeEach()</code> and <code>afterEach()</code> property of the router.</p>
+
+<ul>
+<li><code>beforeEach()</code> is called before the navigation is confirmed</li>
+<li><code>beforeResolve()</code> is called when beforeEach is executed and all the components <code>beforeRouterEnter</code> and <code>beforeRouteUpdate</code> guards are called, but before the navigation is confirmed. The final check, if you want</li>
+<li><code>afterEach()</code> is called after the navigation is confirmed</li>
+</ul>
+
+<p>What does “the navigation is confirmed” mean? We’ll see it in a second. In the meantime think of it as “the app can go to that route”.</p>
+
+<p>The usage is:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p><code>to</code> and <code>from</code> represent the route objects that we go to and from. <code>beforeEach</code> has an additional parameter <code>next</code> which if we call with <code>false</code> as the parameter, will block the navigation, and cause it to be unconfirmed. Like in Node middleware, if you’re familiar, next() should always be called otherwise execution will get stuck.</p>
+
+<p>Single route components also have guards:</p>
+
+<ul>
+<li><code>beforeRouteEnter(from, to, next)</code> is called before the current route is confirmed</li>
+<li><code>beforeRouteUpdate(from, to, next)</code> is called when the route changes but the component that manages it is still the same (with dynamic routing, see next)</li>
+<li><code>beforeRouteLeave(from, to, next)</code> is called when we move away from here</li>
+</ul>
+
+<p>We mentioned navigation. To determine if the navigation to a route is confirmed, Vue Router performs some checks:</p>
+
+<ul>
+<li>it calls <code>beforeRouteLeave</code> guard in the current component(s)</li>
+<li>it calls the router <code>beforeEach()</code> guard</li>
+<li>it calls the <code>beforeRouteUpdate()</code> in any component that needs to be reused, if any exist</li>
+<li>it calls the <code>beforeEnter()</code> guard on the route object (I didn’t mention it but you can look <a href="https://router.vuejs.org/guide/advanced/navigation-guards.html#per-route-guard">here</a>)</li>
+<li>it calls the <code>beforeRouterEnter()</code> in the component that we should enter into</li>
+<li>it calls the router <code>beforeResolve()</code> guard</li>
+<li>if all was fine, the navigation is confirmed!</li>
+<li>it calls the router <code>afterEach()</code> guard</li>
+</ul>
+
+<p>You can use the route-specific guards (<code>beforeRouteEnter</code> and <code>beforeRouteUpdate</code> in case of dynamic routing) as life cycle hooks, so you can start <strong>data fetching requests</strong> for example.</p>
+
+<h2 id="dynamic-routing">Dynamic routing</h2>
+
+<p>The example above shows a different view based on the URL, handling the <code>/</code>, <code>/login</code> and <code>/about</code> routes.</p>
+
+<p>A very common need is to handle dynamic routes, like having all posts under <code>/post/</code>, each with the slug name:</p>
+
+<ul>
+<li><code>/post/first</code></li>
+<li><code>/post/another-post</code></li>
+<li><code>/post/hello-world</code></li>
+</ul>
+
+<p>You can achieve this using a dynamic segment.</p>
+
+<p>Those were static segments:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Home <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/login'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Login <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/about'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> About <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>we add in a dynamic segment to handle blog posts:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Home <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/post/:post_slug'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Post <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/login'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Login <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/about'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> About <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>Notice the <code>:post_slug</code> syntax. This means that you can use any string, and that will be mapped to the <code>post_slug</code> placeholder.</p>
+
+<p>You’re not limited to this kind of syntax. Vue relies on <a href="https://github.com/pillarjs/path-to-regexp">this library</a> to parse dynamic routes, and you can go wild with <a href="https://flaviocopes.com/javascript-regular-expressions/">Regular Expressions</a>.</p>
+
+<p>Now inside the Post route component we can reference the route using <code>$route</code>, and the post slug using <code>$route.params.post_slug</code>:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> Post <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Post: {{ $route.params.post_slug }}&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<p>We can use this parameter to load the contents from the backend.</p>
+
+<p>You can have as many dynamic segments as you want, in the same URL:</p>
+
+<p><code>/post/:author/:post_slug</code></p>
+
+<p>Remember when before we talked about what happens when a user navigates to a new route?</p>
+
+<p>In the case of dynamic routes, what happens is a little different.</p>
+
+<p>Vue to be more efficient instead of destroying the current route component and re-instantiating it, it reuses the current instance.</p>
+
+<p>When this happens, Vue calls the <code>beforeRouteUpdate</code> life cycle event. There you can perform any operation you need:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> Post <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Post: {{ $route.params.post_slug }}&lt;/div&gt;'</span>
+  <span class="token function">beforeRouteUpdate</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Updating slug from </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">from</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> to </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>to<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//make sure you always call next()</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<h2 id="using-props">Using props</h2>
+
+<p>In the examples, I used <code>$route.params.*</code> to access the route data. A component should not be so tightly coupled with the router, and instead, we can use props:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> Post <span class="token operator">=</span> <span class="token punctuation">{</span>
+  props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'post_slug'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Post: {{ post_slug }}&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/post/:post_slug'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Post<span class="token punctuation">,</span> props<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+<p>Notice the <code>props: true</code> passed to the route object to enable this functionality.</p>
+
+<h2 id="nested-routes">Nested routes</h2>
+
+<p>Before I mentioned that you can have as many dynamic segments as you want, in the same URL, like:</p>
+
+<p><code>/post/:author/:post_slug</code></p>
+
+<p>So, say we have an Author component taking care of the first dynamic segment:</p>
+
+<pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> VueRouter <span class="token keyword">from</span> <span class="token string">'vue-router'</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> Author  <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Author: {{ $route.params.author}}&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/post/:author'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> Author <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  router
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+
+<p>We can insert a second <code>router-view</code> component instance inside the Author template:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> Author  <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Author: {{ $route.params.author}}&lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<p>we add the Post component:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> Post <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;div&gt;Post: {{ $route.params.post_slug }}&lt;/div&gt;'</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<p>and then we’ll inject the inner dynamic route in the VueRouter configuration:</p>
+
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> <span class="token string">'/post/:author'</span><span class="token punctuation">,</span>
+    component<span class="token punctuation">:</span> Author<span class="token punctuation">,</span>
+    children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      path<span class="token punctuation">:</span> <span class="token string">':post_slug'</span><span class="token punctuation">,</span>
+      component<span class="token punctuation">:</span> Post
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+</div>
+  </article>
+  <aside>
+    
+<p><a href="https://flaviocopes.com/">🏡 Home</a></p>
+
+
+<input onclick="window.location = &#39;https://flaviocopes.com/page/search&#39;" placeholder="Search">
+<h4>Free ebooks</h4>
+<ul>
+  <li>📒 <a href="https://flaviocopes.com/page/ebooks">JavaScript</a></li>
+  <li>📗 <a href="https://flaviocopes.com/page/ebooks">Vue.js</a></li>
+  <li>📘 <a href="https://flaviocopes.com/page/ebooks">Node.js</a></li>
+  <li>📙 <a href="https://flaviocopes.com/page/ebooks">Express.js</a></li>
+  <li>📕 React [COMING SOON]</li>
+</ul>
+<br>
+<p>🔥 Want more? Get my 1250-pages book <a href="https://gum.co/FKbd">Modern Web Development</a> 🔥</p>
+
+
+
+
+<div class="tags footer-tags">
+  <a href="https://flaviocopes.com/tags/express/" class="button express">Express</a>
+<a href="https://flaviocopes.com/tags/node/" class="button node">Node.js</a>
+<a href="https://flaviocopes.com/tags/git/" class="button git">Git</a>
+<a href="https://flaviocopes.com/tags/network/" class="button network">Network</a>
+<a href="https://flaviocopes.com/tags/browser/" class="button browser">Web Platform</a>
+
+<a href="https://flaviocopes.com/tags/react/" class="button react">React</a>
+<a href="https://flaviocopes.com/tags/vue/" class="button vue">Vue.js</a>
+<a href="https://flaviocopes.com/tags/go/" class="button go">Go</a>
+<a href="https://flaviocopes.com/tags/js/" class="button js">JavaScript</a>
+
+<a href="https://flaviocopes.com/tags/css/" class="button css">CSS</a>
+<a href="https://flaviocopes.com/tags/devtools/" class="button devtools">DevTools</a>
+<a href="https://flaviocopes.com/tags/services/" class="button services">Services</a>
+
+<a href="https://flaviocopes.com/tags/lab/" class="button lab">Lab</a>
+
+
+</div>
+
+
+<p>
+  <a href="https://flaviocopes.com/vue-router/#" onclick="localStorage.setItem(&#39;mode&#39;, (localStorage.getItem(&#39;mode&#39;) || &#39;dark&#39;) === &#39;dark&#39; ? &#39;bright&#39; : &#39;dark&#39;); localStorage.getItem(&#39;mode&#39;) === &#39;dark&#39; ? document.querySelector(&#39;body&#39;).classList.add(&#39;dark&#39;) : document.querySelector(&#39;body&#39;).classList.remove(&#39;dark&#39;)" title="Dark/bright mode">🌓 Light/dark</a>
+</p>
+<p>
+  © 2018 <a href="https://flaviocopes.com/">Flavio Copes</a>
+</p>
+  </aside>
+</div>
+
+
+<script>
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-1739509-40', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+</div></div></body></html>
