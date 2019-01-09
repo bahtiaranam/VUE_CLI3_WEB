@@ -19,7 +19,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn type="submit" @click="handleSubmit" primary>Login </v-btn>
+                <router-link to="/loker"><v-btn light type="submit" @click="handleSubmit" >Login </v-btn></router-link>
               </v-card-actions>
             </v-card>
           </v-flex>

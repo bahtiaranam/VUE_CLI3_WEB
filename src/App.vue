@@ -12,7 +12,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-toolbar flat color="#19b5fe">
+      <v-toolbar flat color="#180D5B">
       <v-toolbar-side-icon id="tb" dark
         @click.native.stop="sideNav = !sideNav" 
           class="hidden-sm-and-up"></v-toolbar-side-icon>
@@ -34,6 +34,9 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
     data() {
       return {
@@ -45,7 +48,7 @@ export default {
         ],
         images:[
           'http://sekampus.id/wp-content/uploads/2018/11/logo-putih.png'
-          ],
+          ]
     }
   }
 }

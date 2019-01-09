@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="first">
         <section id="masuk">
         <v-parallax src="assets/sekampus.png" height="600">
           <v-layout
@@ -8,7 +8,7 @@
             justify-center
             class="white--text"
           >
-            <img width="800px" v-for="img in images" v-bind:src="img"/>
+            <img width="450px" v-for="img in images" v-bind:src="img"/>
             <h1 class="white--text mb-2 display-1 text-xs-center"></h1>
             <div class="subheading mb-3 text-xs-center"></div>
             <!-- <v-btn
@@ -23,12 +23,12 @@
         </v-parallax>
       </section>
 
-      <section>
+      <section id="halo">
         <v-layout
           column
           wrap
           class="my-5"
-          align-center
+          align-center  
         >
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
@@ -99,7 +99,7 @@ export default {
     data() {
       return {
         images:[
-          'https://images.glints.com/unsafe/1024x0/glints-dashboard.s3.amazonaws.com/company-banner-pic/95de5e329d1a484852bf06763212ec9f.png'
+          'http://sekampus.id/wp-content/uploads/2018/11/logo-putih.png'
           ],
           tokped:[
               'https://vignette.wikia.nocookie.net/logopedia/images/d/d6/Tokopedia_baru.png/revision/latest?cb=20160621120508'
@@ -117,6 +117,12 @@ export default {
 
 <style lang="css">
     #masuk{
-        background: white
+        background: #180D5B
+    }
+    #halo{
+      background: #DCDCFB
+    }
+    #first{
+      background: #DCDCFB
     }
 </style>
